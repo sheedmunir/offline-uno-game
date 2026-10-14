@@ -1,0 +1,197 @@
+html {
+    box-sizing: border-box;
+    /* font-family: 'Karla';
+    font-size: 18px;
+    font-weight: 400; */
+}
+*,*:before ,*:after{
+    box-sizing: inherit;
+}
+h4,h1,h2,h3,h5,h6,p,ul,ol,li,dl,dt,dd {
+    margin: 0;
+}
+button {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+    border-radius: 10px;
+}
+#main { 
+    height: 95vh;
+    width: 100%;
+    margin: 0 auto;
+}
+#top {
+    border:2px solid black;
+    height: 25%;
+    margin: 0 auto;
+}
+
+#player-count {
+    text-align: center;
+    height: auto; 
+}
+#players {
+    border:3px solid rgb(0, 0, 255);
+    text-align: center;
+    height: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+.player {
+    BORDER: 2px solid black;
+    display:inline-block;
+    width:25%;
+    height: 70%;
+    vertical-align: top;
+    text-align:center;
+    margin: 10px auto;
+    margin-bottom: 0;
+    BACKGROUND-COLOR: rgb(0, 255, 0);
+    border-radius: 10px;
+    margin: 2%;
+    margin-top: 5%;
+    
+}
+
+
+#middle {
+    border: 2px solid black;
+    height: 50%;
+    margin: 0 auto;
+    text-align: center;
+    vertical-align: top;
+}
+#left {
+    border: 2px solid black;
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+}
+#uno {
+    width: 80%;
+    height: 20%;
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 5%;
+    background-color: rgb(119, 0, 255);
+}
+#left-b {
+    width: 100%;
+    height: 80%;
+    display: inline-block;
+    /* background-color: aqua; */
+}
+#center {
+    border: 2px solid yellow;
+    width: 45%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+#discard {
+    border: 2px solid black; 
+    height: 60%;
+    width: 100%;
+   vertical-align: top;
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 40%;
+    background-color: rgb(255, 0, 106);
+    border-radius: 20px;
+}
+
+#discard[data-color="red"] { background-color: red; }
+#discard[data-color="green"] { background-color: green; }
+#discard[data-color="blue"] { background-color: blue; }
+#discard[data-color="yellow"] { background-color: yellow; }
+#discard[data-color="null"] { background-color: black; color: white; }
+
+#message{
+    border:2px solid red;
+    height: 15%;
+    margin: 0 auto;
+    margin-top: 3%;
+    padding-left: 10px;
+    padding-right: 10px;
+
+}
+
+#right {
+    border: 2px solid red;
+    width: 25%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: top;
+}
+#shuffle-button {
+    border: 2px solid black;
+    width: 80%;
+    height: 20%;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: aquamarine;
+    vertical-align: top;
+    text-align: center;
+    visibility: hidden;
+
+}
+
+#right-t {
+    width: 100%;
+    height: 55%;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 auto;
+    /* background-color: rgb(255, 0, 106); */
+}
+
+#draw {
+    width: 80%;
+    height: 20%;
+    display: inline-block;
+    margin: 0 auto;
+    background-color: aquamarine;
+    vertical-align: top;
+    text-align: center;
+}
+
+
+#bottom {
+    border: 2px solid black;
+    height: 30%;
+    margin: 0 auto;
+    text-align: center;
+}
+#mycards {
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-content: start;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+.card-button {
+    border: 2px solid black;
+    height: 40%;
+    width: 18%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 1%;
+    margin-top: 3%;
+}
+.card-button[data-color="red"] { background-color: red; }
+.card-button[data-color="green"] { background-color: green; }
+.card-button[data-color="blue"] { background-color: blue; }
+.card-button[data-color="yellow"] { background-color: yellow; }
+.card-button[data-color="black"] { background-color: black; color: white; }
+@media (min-width: 500px) {
+    #main {
+        width: 350px;
+        height: 600px;
+    }
+}
