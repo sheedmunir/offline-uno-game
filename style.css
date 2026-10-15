@@ -189,6 +189,32 @@ button {
 .card-button[data-color="blue"] { background-color: blue; }
 .card-button[data-color="yellow"] { background-color: yellow; }
 .card-button[data-color="black"] { background-color: black; color: white; }
+
+.pick-color {
+    width: 80%;
+    height: 20%;
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 5%;
+    border: 2px solid black;
+    margin-top: 20%;
+    margin-bottom: 10%;
+    visibility: hidden;
+
+}
+#r-button{
+    background-color: red;
+}
+#b-button{
+    background-color: blue;
+}
+#y-button{
+    background-color: yellow; 
+}
+#g-button{
+    background-color: green;
+}
+
 @media (min-width: 500px) {
     #main {
         width: 350px;

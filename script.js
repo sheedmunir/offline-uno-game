@@ -40,10 +40,143 @@ function drawRandomCards(num) {
 
 const handContainer = document.getElementById('mycards');
 const shuffleButton = document.getElementById('shuffle-button')
+const redPicker = document.getElementById('r-button')
+const yellowPicker = document.getElementById('y-button')
+const bluePicker = document.getElementById('b-button')
+const greenPicker = document.getElementById('g-button')
+let pendingWildCard = null;
+let pendingCard =null;
+let pendingTimer;
 
+    function showPending(pcard) {       
+        greenPicker.style.visibility = 'unset';
+        bluePicker.style.visibility = 'unset';
+        redPicker.style.visibility = 'unset';
+        yellowPicker.style.visibility = 'unset';
+        pendingCard = pcard;
+        pendingWildCard = 'pending';
+        clearTimeout(pendingTimer);
+        pendingTimer = setTimeout( () =>{
+            pendingCard =null;
+            pendingWildCard = null;
+            greenPicker.style.visibility = 'hidden';
+            bluePicker.style.visibility = 'hidden';
+            redPicker.style.visibility = 'hidden';
+            yellowPicker.style.visibility = 'hidden';},5000);
 
+        }
 
+redPicker.addEventListener('click',()=>{
 
+            if(pendingWildCard === 'pending'){
+                const card = pendingCard;
+
+                currentDiscard.color='red'
+                currentDiscard.value='wild'
+                const discard = document.getElementById('discard');
+                discard.textContent = card.color ? `${card.color} ${card.value}` : card.value;
+                discard.dataset.color = 'red';
+                const inex = myHand.indexOf(card);
+                played.push(card)
+                myHand.splice(inex,1);
+                renderHand();
+                pendingWildCard = null;
+                pendingCard = null;
+                redPicker.style.visibility = 'hidden';
+                greenPicker.style.visibility = 'hidden';
+                bluePicker.style.visibility = 'hidden';
+                yellowPicker.style.visibility = 'hidden';
+            }
+
+                else{
+                    console.log('someone clicked')
+            }
+        }
+        )
+
+yellowPicker.addEventListener('click',()=>{
+
+            if(pendingWildCard === 'pending'){
+                const card = pendingCard;
+
+                currentDiscard.color='yellow'
+                currentDiscard.value='wild'
+                const discard = document.getElementById('discard');
+                discard.textContent = card.color ? `${card.color} ${card.value}` : card.value;
+                discard.dataset.color = 'yellow';
+                const inex = myHand.indexOf(card);
+                played.push(card)
+                myHand.splice(inex,1);
+                renderHand();
+                pendingWildCard = null;
+                pendingCard = null;
+                yellowPicker.style.visibility = 'hidden';
+                greenPicker.style.visibility = 'hidden';
+                bluePicker.style.visibility = 'hidden';
+                redPicker.style.visibility = 'hidden';
+            }
+
+                else{
+                    console.log('someone clicked')
+            }
+        }
+        )
+
+bluePicker.addEventListener('click',()=>{
+
+            if(pendingWildCard === 'pending'){
+                const card = pendingCard;
+
+                currentDiscard.color='blue'
+                currentDiscard.value='wild'
+                const discard = document.getElementById('discard');
+                discard.textContent = card.color ? `${card.color} ${card.value}` : card.value;
+                discard.dataset.color = 'blue';
+                const inex = myHand.indexOf(card);
+                played.push(card)
+                myHand.splice(inex,1);
+                renderHand();
+                pendingWildCard = null;
+                pendingCard = null;
+                bluePicker.style.visibility = 'hidden';
+                greenPicker.style.visibility = 'hidden';
+                redPicker.style.visibility = 'hidden';
+                yellowPicker.style.visibility = 'hidden';
+            }
+
+                else{
+                    console.log('someone clicked')
+            }
+        }
+        )
+        
+     greenPicker.addEventListener('click',()=>{
+
+            if(pendingWildCard === 'pending'){
+                const card = pendingCard;
+
+                currentDiscard.color='green'
+                currentDiscard.value='wild'
+                const discard = document.getElementById('discard');
+                discard.textContent = card.color ? `${card.color} ${card.value}` : card.value;
+                discard.dataset.color = 'green';
+                const inex = myHand.indexOf(card);
+                played.push(card)
+                myHand.splice(inex,1);
+                renderHand();
+                pendingWildCard = null;
+                pendingCard = null;
+                greenPicker.style.visibility = 'hidden';
+                bluePicker.style.visibility = 'hidden';
+                redPicker.style.visibility = 'hidden';
+                yellowPicker.style.visibility = 'hidden';
+            }
+
+                else{
+                    console.log('someone clicked')
+            }
+        }
+        )        
 
 
 
@@ -61,25 +194,32 @@ function renderHand() {
         
         cardButton.addEventListener('click',()=>{
 
+
+            if(card.color === null){
+                showMessage('please pick a color');
+                showPending(card);
+
+            }    
+
+            else if(currentDiscard.color === card.color || currentDiscard.value === card.value || currentDiscard.color === null ) {
             
-    if(currentDiscard.color === card.color || currentDiscard.value === card.value || currentDiscard.color === null  || card.color === null){
-    const discard = document.getElementById('discard');
-    discard.textContent = card.color ? `${card.color} ${card.value}` : card.value;
-    discard.dataset.color = card.color;
-    const inex = myHand.indexOf(card);
-    played.push(card)
-    myHand.splice(inex,1);
-    renderHand();
-    currentDiscard = card;
-    showMessage('success');
-    
+            const discard = document.getElementById('discard');
+            discard.textContent = card.color ? `${card.color} ${card.value}` : card.value;
+            discard.dataset.color = card.color;
+            const inex = myHand.indexOf(card);
+            played.push(card)
+            myHand.splice(inex,1);
+            renderHand();
+            currentDiscard = card;
+            showMessage('success');
+            
 
 
-    }
-
-    else{
-        showMessage('fail');
-    }
+            }
+            
+            else{
+                showMessage('fail');
+            }
         });
 
     }
@@ -100,6 +240,7 @@ discard.textContent = currentDiscard.color ? `${currentDiscard.color} ${currentD
 discard.dataset.color = currentDiscard.color; 
 
 }
+
 renderDiscard();
 const myHand = drawRandomCards(7);
 renderHand();
@@ -160,6 +301,7 @@ draw.addEventListener('click',()=>{
 
         }
 
+        
         const played = [];
 
         function shuffle() {
